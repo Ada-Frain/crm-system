@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ project.name }}
+{% endblock %}
+{% block content %}
+<div class="container-fluid content">
+    <button type="button" value="Previous Page" class="btn btn-dark" onClick="window.history.back();return false;" style="margin-left: 6%; margin-top: 3%;">
+        Назад
+    </button>
+    <div class="col-md-6" style="margin-left: 25%; font-size: larger;">
+        <h3>Название проекта: {{ project.name }}</h3>
+        <p>Адрес: {{ project.adress }}</p>
+        <p>Инженер: {{ project.engineer }}</p>
+        <p>Контакты: {{ project.contacts }}</p>
+        <p>Статус: {{ project.status }}</p>
+        <p class="text-right">
+            <a href="#" class="btn btn-dark">Изменить</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

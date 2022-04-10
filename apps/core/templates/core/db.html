@@ -1,0 +1,89 @@
+{% extends  'base.html' %}
+{% block title %}
+Строй-маркет
+{% endblock %}
+{% block content %}
+
+<div class="container-fluid content">
+    <div class="row">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>Название</th>
+                <th>Номер договора</th>
+                <th>Бренд</th>
+                <th>Подрядчик</th>
+                <th>Номер договора с подрядчиком</th>
+                <th>Статус проекта</th>
+                <th>Аванс</th>
+                <th>Аванс</th>
+                <th>Аванс</th>
+                <th>Итоговая сумма</th>
+                <th>КС/УПД</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for p in projects %}
+                {% if p.status == 'В работе' %}
+                    <tr>
+                        <td><a href="{{ p.get_absolute_url }}" class="link-warning">{{ p.name }}</a></td>
+                        <td>{{ p.contract_number }}</td>
+                        <td>{{ p.brand }}</td>
+                        <td>{{ p.contractor }}</td>
+                        <td>{{ p.contractor_contract }}</td>
+                        <td>{{ p.status }}</td>
+                        <td>{{ p.advance_payment1 }}</td>
+                        <td>{{ p.advance_payment2 }}</td>
+                        <td>{{ p.advance_payment3 }}</td>
+                        <td>{{ p.final_sum }}</td>
+                        <td>{{ p.cs_upd }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>Название</th>
+                <th>Номер договора</th>
+                <th>Бренд</th>
+                <th>Подрядчик</th>
+                <th>Номер договора с подрядчиком</th>
+                <th>Статус проекта</th>
+                <th>Аванс</th>
+                <th>Аванс</th>
+                <th>Аванс</th>
+                <th>Итоговая сумма</th>
+                <th>КС/УПД</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for p in projects %}
+                {% if p.status == 'Закончен' %}
+                    <tr>
+                        <td><a href="{{ p.get_absolute_url }}" class="link-warning">{{ p.name }}</a></td>
+                        <td>{{ p.contract_number }}</td>
+                        <td>{{ p.brand }}</td>
+                        <td>{{ p.contractor }}</td>
+                        <td>{{ p.contractor_contract }}</td>
+                        <td>{{ p.status }}</td>
+                        <td>{{ p.advance_payment1 }}</td>
+                        <td>{{ p.advance_payment2 }}</td>
+                        <td>{{ p.advance_payment3 }}</td>
+                        <td>{{ p.final_sum }}</td>
+                        <td>{{ p.cs_upd }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        
+    <p class="text-right">
+        <a href="{% url 'add_object:add_object' %}" class="btn btn-dark">Добавить проект</a>
+    </p>
+</div>
+
+{% endblock %}
